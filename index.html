@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scapia Extranet - Property Onboarding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- App Container -->
+  <div id="app">
+
+    <!-- ==================== LOGIN PAGE ==================== -->
+    <div class="page" id="loginPage">
+      <div class="auth-container">
+        <div class="auth-left">
+          <div class="auth-bg-pattern"></div>
+          <div class="auth-content">
+            <div class="auth-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/>
+                <path d="M1 21h22"/>
+                <path d="M9 7h1"/>
+                <path d="M9 11h1"/>
+                <path d="M9 15h1"/>
+                <path d="M14 7h1"/>
+                <path d="M14 11h1"/>
+                <path d="M14 15h1"/>
+                <rect x="9" y="18" width="6" height="3"/>
+              </svg>
+            </div>
+            <h1>Welcome to Scapia Extranet</h1>
+            <p>Manage your properties, rooms, and bookings all in one place. Join thousands of hoteliers growing with Scapia.</p>
+            <div class="auth-features">
+              <div class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Easy property onboarding</span>
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Smart content pre-filling</span>
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Direct bookings from Scapia app</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="auth-right">
+          <div class="auth-form-container">
+            <div class="logo">Scapia</div>
+
+            <!-- Login Form -->
+            <div class="auth-form" id="loginForm">
+              <h2>Sign in to your account</h2>
+              <p class="auth-subtitle">Enter your email to receive a verification code</p>
+
+              <div class="form-group">
+                <label class="form-label">Email Address <span class="required">*</span></label>
+                <input type="email" class="form-input" id="loginEmail" placeholder="Enter your email">
+              </div>
+
+              <button class="btn btn-primary btn-full" id="sendOtpBtn">
+                Send Verification Code
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+
+              <p class="auth-switch">Don't have an account? <a href="#" id="showSignup">Create Account</a></p>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="auth-form hidden" id="signupForm">
+              <h2>Create your account</h2>
+              <p class="auth-subtitle">Join Scapia Extranet to list your properties</p>
+
+              <div class="form-group">
+                <label class="form-label">Full Name <span class="required">*</span></label>
+                <input type="text" class="form-input" id="signupName" placeholder="Enter your full name">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Email Address <span class="required">*</span></label>
+                <input type="email" class="form-input" id="signupEmail" placeholder="Enter your email">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Mobile Number <span class="required">*</span></label>
+                <div class="phone-input">
+                  <select class="country-code">
+                    <option value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <option value="+44">+44</option>
+                  </select>
+                  <input type="tel" class="form-input" id="signupPhone" placeholder="Enter mobile number">
+                </div>
+              </div>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="acceptTerms">
+                <label for="acceptTerms">I accept the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+              </div>
+
+              <button class="btn btn-primary btn-full" id="signupBtn">
+                Create Account
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+
+              <p class="auth-switch">Already have an account? <a href="#" id="showLogin">Sign In</a></p>
+            </div>
+
+            <!-- OTP Verification -->
+            <div class="auth-form hidden" id="otpForm">
+              <h2>Verify your email</h2>
+              <p class="auth-subtitle">We've sent a 6-digit code to <strong id="otpEmail">email@example.com</strong></p>
+
+              <div class="otp-inputs">
+                <input type="text" maxlength="1" class="otp-input" data-index="0">
+                <input type="text" maxlength="1" class="otp-input" data-index="1">
+                <input type="text" maxlength="1" class="otp-input" data-index="2">
+                <input type="text" maxlength="1" class="otp-input" data-index="3">
+                <input type="text" maxlength="1" class="otp-input" data-index="4">
+                <input type="text" maxlength="1" class="otp-input" data-index="5">
+              </div>
+
+              <button class="btn btn-primary btn-full" id="verifyOtpBtn">
+                Verify & Continue
+              </button>
+
+              <p class="resend-otp">Didn't receive the code? <a href="#" id="resendOtp">Resend OTP</a> <span class="timer">(30s)</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== DASHBOARD PAGE ==================== -->
+    <div class="page hidden" id="dashboardPage">
+      <header class="header">
+        <div class="header-left">
+          <div class="logo">Scapia</div>
+          <span class="logo-badge">Extranet</span>
+        </div>
+        <div class="header-right">
+          <button class="btn btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </button>
+          <div class="user-menu">
+            <div class="user-avatar">GA</div>
+            <span class="user-name">Garvit Anand</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-main">
+        <div class="dashboard-header">
+          <div>
+            <h1>Welcome back, Garvit!</h1>
+            <p>Manage your properties and track your performance</p>
+          </div>
+          <button class="btn btn-primary" id="addPropertyBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add New Property
+          </button>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">3</span>
+              <span class="stat-label">Active Properties</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">1</span>
+              <span class="stat-label">Under Review</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">24</span>
+              <span class="stat-label">Bookings This Month</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">₹1.2L</span>
+              <span class="stat-label">Revenue This Month</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Properties Section -->
+        <div class="properties-section">
+          <div class="section-header">
+            <h2>Your Properties</h2>
+            <div class="tabs">
+              <button class="tab active" data-tab="active">Active (3)</button>
+              <button class="tab" data-tab="review">Under Review (1)</button>
+              <button class="tab" data-tab="drafts">Drafts (0)</button>
+            </div>
+          </div>
+
+          <div class="properties-grid" id="propertiesGrid">
+            <!-- Property Card 1 -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=250&fit=crop" alt="Hotel">
+                <span class="property-status active">Active</span>
+              </div>
+              <div class="property-content">
+                <h3>Grand Plaza Hotel</h3>
+                <p class="property-location">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Andheri West, Mumbai
+                </p>
+                <div class="property-stats">
+                  <span><strong>12</strong> Rooms</span>
+                  <span><strong>4.5</strong> Rating</span>
+                  <span><strong>89%</strong> Occupancy</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Property Card 2 -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400&h=250&fit=crop" alt="Hotel">
+                <span class="property-status active">Active</span>
+              </div>
+              <div class="property-content">
+                <h3>Sunset Beach Resort</h3>
+                <p class="property-location">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Calangute, Goa
+                </p>
+                <div class="property-stats">
+                  <span><strong>24</strong> Rooms</span>
+                  <span><strong>4.8</strong> Rating</span>
+                  <span><strong>94%</strong> Occupancy</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Property Card 3 -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&h=250&fit=crop" alt="Hotel">
+                <span class="property-status active">Active</span>
+              </div>
+              <div class="property-content">
+                <h3>Mountain View Inn</h3>
+                <p class="property-location">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Mall Road, Shimla
+                </p>
+                <div class="property-stats">
+                  <span><strong>8</strong> Rooms</span>
+                  <span><strong>4.3</strong> Rating</span>
+                  <span><strong>76%</strong> Occupancy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ==================== PROPERTY ONBOARDING FLOW ==================== -->
+    <div class="page hidden" id="onboardingPage">
+      <header class="header">
+        <div class="header-left">
+          <button class="btn btn-icon back-to-dashboard" id="backToDashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          </button>
+          <div class="logo">Scapia</div>
+          <span class="logo-badge">Extranet</span>
+        </div>
+        <div class="header-center">
+          <span class="onboarding-title">Add New Property</span>
+        </div>
+        <div class="header-right">
+          <button class="btn btn-secondary btn-sm" id="saveDraftBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Save Draft
+          </button>
+        </div>
+      </header>
+
+      <!-- Progress Steps -->
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active" data-step="1">
+            <div class="step-number">1</div>
+            <span class="step-label">Property Selection</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step" data-step="2">
+            <div class="step-number">2</div>
+            <span class="step-label">Property Details</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step" data-step="3">
+            <div class="step-number">3</div>
+            <span class="step-label">Room Details</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step" data-step="4">
+            <div class="step-number">4</div>
+            <span class="step-label">Policies</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step" data-step="5">
+            <div class="step-number">5</div>
+            <span class="step-label">Documents</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step" data-step="6">
+            <div class="step-number">6</div>
+            <span class="step-label">Review</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step Content Container -->
+      <main class="onboarding-main">
+
+        <!-- ========== STEP 1: Property Selection ========== -->
+        <div class="step-content active" id="step1">
+          <div class="step-header">
+            <h1>Property Selection</h1>
+            <p>Enter your property details to get started</p>
+          </div>
+
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div>
+                <h2>Property Details</h2>
+                <p>Enter your property name as it appears on registration documents</p>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label class="form-label">Name of the Property <span class="required">*</span></label>
+                <input type="text" class="form-input" id="propertyName" placeholder="Enter property name">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <h2>Property Location</h2>
+                <p>Please fill in the location details of your property</p>
+              </div>
+            </div>
+
+            <div class="info-banner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <p>To avoid rejection, please enter the address as per the registration or lease document.</p>
+            </div>
+
+            <div class="location-grid">
+              <div class="location-form">
+                <div class="form-group">
+                  <label class="form-label">Search Location</label>
+                  <div class="search-input-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" class="form-input search-input" placeholder="Search location on map">
+                  </div>
+                  <a href="#" class="use-location-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+                    Or Use My Current Location
+                  </a>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">House/Building/Apartment No. <span class="required">*</span></label>
+                  <input type="text" class="form-input" id="buildingNo" placeholder="Enter building/apartment number">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Locality/Area/Street/Sector <span class="required">*</span></label>
+                  <input type="text" class="form-input" id="locality" placeholder="Enter locality">
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Pincode <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="pincode" placeholder="Enter pincode">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Country <span class="required">*</span></label>
+                    <select class="form-input" id="country">
+                      <option value="India">India</option>
+                      <option value="USA">USA</option>
+                      <option value="UK">UK</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">State <span class="required">*</span></label>
+                    <select class="form-input" id="state">
+                      <option value="">Select State</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Goa">Goa</option>
+                      <option value="Karnataka">Karnataka</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">City <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="city" placeholder="Enter city">
+                  </div>
+                </div>
+              </div>
+
+              <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709657!3d19.08219783958221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="btn btn-secondary" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Back
+            </button>
+            <button class="btn btn-primary" id="findPropertyBtn">
+              Find My Property
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ========== STEP 2: Property Details ========== -->
+        <div class="step-content" id="step2">
+          <div class="step-header">
+            <h1>Property Details</h1>
+            <p>Add information about your property</p>
+          </div>
+
+          <!-- Basic Info -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              </div>
+              <div>
+                <h2>Basic Information</h2>
+                <p>Tell us more about your property</p>
+              </div>
+            </div>
+
+            <div class="form-grid cols-2">
+              <div class="form-group">
+                <label class="form-label">Property Type <span class="required">*</span></label>
+                <select class="form-input" id="propertyType">
+                  <option value="">Select property type</option>
+                  <option value="hotel">Hotel</option>
+                  <option value="resort">Resort</option>
+                  <option value="villa">Villa</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="homestay">Homestay</option>
+                  <option value="guesthouse">Guest House</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Star Rating <span class="required">*</span></label>
+                <select class="form-input" id="starRating">
+                  <option value="">Select rating</option>
+                  <option value="5">5 Star</option>
+                  <option value="4">4 Star</option>
+                  <option value="3">3 Star</option>
+                  <option value="2">2 Star</option>
+                  <option value="1">1 Star</option>
+                  <option value="0">Unrated</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Hotel Chain (Optional)</label>
+                <input type="text" class="form-input" id="hotelChain" placeholder="Enter hotel chain name">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Year Built <span class="required">*</span></label>
+                <input type="number" class="form-input" id="yearBuilt" placeholder="e.g., 2015">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Do you use a Channel Manager?</label>
+                <div class="radio-group">
+                  <label class="radio-option">
+                    <input type="radio" name="channelManager" value="yes">
+                    <span>Yes</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="channelManager" value="no" checked>
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group hidden" id="channelManagerSelect">
+                <label class="form-label">Select Channel Manager</label>
+                <select class="form-input">
+                  <option value="">Select channel manager</option>
+                  <option value="staah">STAAH</option>
+                  <option value="rategain">RateGain</option>
+                  <option value="eglobe">eGlobe</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Details -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <h2>Contact Details</h2>
+                <p>How can guests reach you?</p>
+              </div>
+            </div>
+
+            <div class="form-grid cols-2">
+              <div class="form-group">
+                <label class="form-label">Email Address <span class="required">*</span></label>
+                <div class="input-with-action">
+                  <input type="email" class="form-input" id="contactEmail" placeholder="Enter email address">
+                  <button class="btn btn-sm btn-outline verify-btn">Verify</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Mobile Number <span class="required">*</span></label>
+                <div class="input-with-action">
+                  <div class="phone-input full">
+                    <select class="country-code">
+                      <option value="+91">+91</option>
+                    </select>
+                    <input type="tel" class="form-input" id="contactPhone" placeholder="Enter mobile number">
+                  </div>
+                  <button class="btn btn-sm btn-outline verify-btn">Verify</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Images -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              </div>
+              <div>
+                <h2>Property Images</h2>
+                <p>Upload at least 10 high-quality images of your property</p>
+              </div>
+            </div>
+
+            <div class="image-requirements">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Min 10 images</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Min resolution 1024x768</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> JPG, PNG formats</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Max 5MB per image</span>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="hero-image-section">
+              <h3>Hero Image (Cover Photo)</h3>
+              <div class="hero-image-upload" id="heroImageUpload">
+                <div class="upload-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span>Click or drag to upload hero image</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Other Images -->
+            <div class="images-grid-section">
+              <h3>Property Photos <span class="image-count">(0/10 minimum)</span></h3>
+              <div class="images-upload-grid" id="imagesGrid">
+                <div class="image-upload-box" id="addImageBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  <span>Add Photos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Amenities -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div>
+                <h2>Property Amenities</h2>
+                <p>Select all amenities available at your property</p>
+              </div>
+            </div>
+
+            <div class="amenities-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" placeholder="Search amenities..." id="amenitySearch">
+            </div>
+
+            <div class="amenities-categories">
+              <div class="amenity-category">
+                <h4>Popular Amenities</h4>
+                <div class="amenities-grid">
+                  <label class="amenity-checkbox">
+                    <input type="checkbox" checked>
+                    <span class="amenity-icon">🅿️</span>
+                    <span>Parking</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox" checked>
+                    <span class="amenity-icon">📶</span>
+                    <span>Free WiFi</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox">
+                    <span class="amenity-icon">🏊</span>
+                    <span>Swimming Pool</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox">
+                    <span class="amenity-icon">🍽️</span>
+                    <span>Restaurant</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox" checked>
+                    <span class="amenity-icon">❄️</span>
+                    <span>Air Conditioning</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox">
+                    <span class="amenity-icon">💪</span>
+                    <span>Gym/Fitness Center</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox">
+                    <span class="amenity-icon">💆</span>
+                    <span>Spa</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox" checked>
+                    <span class="amenity-icon">🛎️</span>
+                    <span>24/7 Front Desk</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="amenity-category">
+                <h4>Room Amenities</h4>
+                <div class="amenities-grid">
+                  <label class="amenity-checkbox">
+                    <input type="checkbox" checked>
+                    <span class="amenity-icon">📺</span>
+                    <span>TV</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox">
+                    <span class="amenity-icon">🧊</span>
+                    <span>Mini Bar</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox" checked>
+                    <span class="amenity-icon">☕</span>
+                    <span>Tea/Coffee Maker</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox">
+                    <span class="amenity-icon">🔒</span>
+                    <span>Safe</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox" checked>
+                    <span class="amenity-icon">🚿</span>
+                    <span>Hot Water</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox">
+                    <span class="amenity-icon">👔</span>
+                    <span>Iron</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="amenity-category">
+                <h4>Services</h4>
+                <div class="amenities-grid">
+                  <label class="amenity-checkbox">
+                    <input type="checkbox" checked>
+                    <span class="amenity-icon">🧹</span>
+                    <span>Housekeeping</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox">
+                    <span class="amenity-icon">👕</span>
+                    <span>Laundry</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox">
+                    <span class="amenity-icon">🍳</span>
+                    <span>Room Service</span>
+                  </label>
+                  <label class="amenity-checkbox">
+                    <input type="checkbox">
+                    <span class="amenity-icon">🚐</span>
+                    <span>Airport Shuttle</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="quality-nudge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <p>Top hotels typically list <strong>15+ amenities</strong>. You've selected 7. Would you like to add more?</p>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="btn btn-secondary" onclick="goToStep(1)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Back
+            </button>
+            <button class="btn btn-primary" onclick="goToStep(3)">
+              Continue to Room Details
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ========== STEP 3: Room Details ========== -->
+        <div class="step-content" id="step3">
+          <div class="step-header">
+            <h1>Room Details</h1>
+            <p>Add room types and their details</p>
+          </div>
+
+          <!-- Room List -->
+          <div class="rooms-list" id="roomsList">
+            <!-- Room Card 1 -->
+            <div class="room-card" data-room="1">
+              <div class="room-card-header">
+                <div class="room-info">
+                  <h3>Deluxe Room</h3>
+                  <span class="room-meta">2 Adults • 1 King Bed • 32 sqm</span>
+                </div>
+                <div class="room-actions">
+                  <button class="btn btn-icon btn-sm" title="Edit">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  </button>
+                  <button class="btn btn-icon btn-sm" title="Delete">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="room-card-body">
+                <div class="room-images">
+                  <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=100&h=80&fit=crop" alt="Room">
+                  <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=100&h=80&fit=crop" alt="Room">
+                  <span class="more-images">+3</span>
+                </div>
+                <div class="room-details-grid">
+                  <div class="detail-item">
+                    <span class="detail-label">Base Price</span>
+                    <span class="detail-value">₹4,500/night</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Inventory</span>
+                    <span class="detail-value">8 rooms</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Meal Plan</span>
+                    <span class="detail-value">CP (Breakfast)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add Room Button -->
+          <button class="btn btn-outline btn-full add-room-btn" id="addRoomBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add Room Type
+          </button>
+
+          <!-- Add Room Form (Initially Hidden) -->
+          <div class="form-card room-form hidden" id="roomForm">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div>
+                <h2>Add New Room Type</h2>
+                <p>Enter room details</p>
+              </div>
+              <button class="btn btn-icon close-form-btn" id="closeRoomForm">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+
+            <div class="form-grid cols-2">
+              <div class="form-group">
+                <label class="form-label">Room Type Name <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="e.g., Deluxe Room, Suite">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Room View</label>
+                <select class="form-input">
+                  <option value="">Select view</option>
+                  <option value="city">City View</option>
+                  <option value="garden">Garden View</option>
+                  <option value="pool">Pool View</option>
+                  <option value="ocean">Ocean View</option>
+                  <option value="mountain">Mountain View</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Balcony</label>
+                <div class="radio-group">
+                  <label class="radio-option"><input type="radio" name="balcony" value="yes"><span>With Balcony</span></label>
+                  <label class="radio-option"><input type="radio" name="balcony" value="no" checked><span>Without Balcony</span></label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Smoking Policy</label>
+                <div class="radio-group">
+                  <label class="radio-option"><input type="radio" name="smoking" value="yes"><span>Smoking</span></label>
+                  <label class="radio-option"><input type="radio" name="smoking" value="no" checked><span>Non-Smoking</span></label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Room Size (sqm) <span class="required">*</span></label>
+                <input type="number" class="form-input" placeholder="e.g., 32">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Number of Rooms <span class="required">*</span></label>
+                <input type="number" class="form-input" placeholder="e.g., 10">
+              </div>
+            </div>
+
+            <h3 class="form-section-title">Bed Configuration</h3>
+            <div class="form-grid cols-3">
+              <div class="form-group">
+                <label class="form-label">Bed Type <span class="required">*</span></label>
+                <select class="form-input">
+                  <option value="">Select bed type</option>
+                  <option value="king">King Bed</option>
+                  <option value="queen">Queen Bed</option>
+                  <option value="double">Double Bed</option>
+                  <option value="twin">Twin Beds</option>
+                  <option value="single">Single Bed</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Number of Beds</label>
+                <input type="number" class="form-input" value="1">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Extra Bed Available</label>
+                <div class="radio-group">
+                  <label class="radio-option"><input type="radio" name="extraBed" value="yes"><span>Yes</span></label>
+                  <label class="radio-option"><input type="radio" name="extraBed" value="no" checked><span>No</span></label>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="form-section-title">Occupancy</h3>
+            <div class="form-grid cols-4">
+              <div class="form-group">
+                <label class="form-label">Base Adults</label>
+                <input type="number" class="form-input" value="2">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Max Adults</label>
+                <input type="number" class="form-input" value="3">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Max Children</label>
+                <input type="number" class="form-input" value="2">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Max Occupancy</label>
+                <input type="number" class="form-input" value="4">
+              </div>
+            </div>
+
+            <h3 class="form-section-title">Pricing</h3>
+            <div class="form-grid cols-3">
+              <div class="form-group">
+                <label class="form-label">Base Adult Rate (₹) <span class="required">*</span></label>
+                <input type="number" class="form-input" placeholder="e.g., 4500">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Extra Adult Rate (₹)</label>
+                <input type="number" class="form-input" placeholder="e.g., 1000">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Child Rate (₹)</label>
+                <input type="number" class="form-input" placeholder="e.g., 500">
+              </div>
+            </div>
+
+            <h3 class="form-section-title">Meal Plan</h3>
+            <div class="meal-plan-options">
+              <label class="meal-option">
+                <input type="radio" name="mealPlan" value="ep">
+                <div class="meal-content">
+                  <strong>EP</strong>
+                  <span>Room Only (No Meals)</span>
+                </div>
+              </label>
+              <label class="meal-option">
+                <input type="radio" name="mealPlan" value="cp" checked>
+                <div class="meal-content">
+                  <strong>CP</strong>
+                  <span>Breakfast Included</span>
+                </div>
+              </label>
+              <label class="meal-option">
+                <input type="radio" name="mealPlan" value="map">
+                <div class="meal-content">
+                  <strong>MAP</strong>
+                  <span>Breakfast + Lunch/Dinner</span>
+                </div>
+              </label>
+              <label class="meal-option">
+                <input type="radio" name="mealPlan" value="ap">
+                <div class="meal-content">
+                  <strong>AP</strong>
+                  <span>All Meals Included</span>
+                </div>
+              </label>
+            </div>
+
+            <h3 class="form-section-title">Room Images</h3>
+            <div class="images-upload-grid small">
+              <div class="image-upload-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span>Add Photos</span>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn-secondary" id="cancelRoomBtn">Cancel</button>
+              <button class="btn btn-primary" id="saveRoomBtn">Save Room Type</button>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="btn btn-secondary" onclick="goToStep(2)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Back
+            </button>
+            <button class="btn btn-primary" onclick="goToStep(4)">
+              Continue to Policies
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ========== STEP 4: Policies ========== -->
+        <div class="step-content" id="step4">
+          <div class="step-header">
+            <h1>Property Policies</h1>
+            <p>Set your property rules and policies</p>
+          </div>
+
+          <!-- Check-in/Check-out -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <h2>Check-in / Check-out</h2>
+                <p>Set your check-in and check-out times</p>
+              </div>
+            </div>
+
+            <div class="form-grid cols-3">
+              <div class="form-group">
+                <label class="form-label">Check-in Time <span class="required">*</span></label>
+                <select class="form-input">
+                  <option value="12:00">12:00 PM</option>
+                  <option value="13:00">1:00 PM</option>
+                  <option value="14:00" selected>2:00 PM</option>
+                  <option value="15:00">3:00 PM</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Check-out Time <span class="required">*</span></label>
+                <select class="form-input">
+                  <option value="10:00">10:00 AM</option>
+                  <option value="11:00" selected>11:00 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">24-Hour Check-in?</label>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="24hrCheckin">
+                  <label for="24hrCheckin"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cancellation Policy -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              </div>
+              <div>
+                <h2>Cancellation Policy <span class="required">*</span></h2>
+                <p>Select your cancellation policy</p>
+              </div>
+            </div>
+
+            <div class="policy-options">
+              <label class="policy-option">
+                <input type="radio" name="cancellation" value="flexible">
+                <div class="policy-content">
+                  <strong>Flexible</strong>
+                  <p>Free cancellation until 24 hours before check-in</p>
+                </div>
+              </label>
+              <label class="policy-option">
+                <input type="radio" name="cancellation" value="moderate" checked>
+                <div class="policy-content">
+                  <strong>Moderate</strong>
+                  <p>Free cancellation until 3 days before check-in. 50% refund if cancelled within 3 days.</p>
+                </div>
+              </label>
+              <label class="policy-option">
+                <input type="radio" name="cancellation" value="strict">
+                <div class="policy-content">
+                  <strong>Strict</strong>
+                  <p>Free cancellation until 7 days before check-in. No refund after that.</p>
+                </div>
+              </label>
+              <label class="policy-option">
+                <input type="radio" name="cancellation" value="nonrefundable">
+                <div class="policy-content">
+                  <strong>Non-Refundable</strong>
+                  <p>No refund on cancellation</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Guest Policies -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div>
+                <h2>Guest Policies</h2>
+                <p>Define who can stay at your property</p>
+              </div>
+            </div>
+
+            <div class="policy-toggles">
+              <div class="policy-toggle-item">
+                <div class="policy-info">
+                  <strong>Allow unmarried couples?</strong>
+                  <p>Couples without marriage certificate can check-in</p>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="unmarriedCouples" checked>
+                  <label for="unmarriedCouples"></label>
+                </div>
+              </div>
+
+              <div class="policy-toggle-item">
+                <div class="policy-info">
+                  <strong>Allow primary guests below 18?</strong>
+                  <p>Guests below 18 years can be primary bookers</p>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="below18">
+                  <label for="below18"></label>
+                </div>
+              </div>
+
+              <div class="policy-toggle-item">
+                <div class="policy-info">
+                  <strong>Allow groups with only male guests?</strong>
+                  <p>All-male groups can stay at your property</p>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="maleGroups" checked>
+                  <label for="maleGroups"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Restrictions -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+              </div>
+              <div>
+                <h2>Property Restrictions</h2>
+                <p>Set your property rules</p>
+              </div>
+            </div>
+
+            <div class="policy-toggles">
+              <div class="policy-toggle-item">
+                <div class="policy-info">
+                  <strong>Smoking allowed?</strong>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="smoking">
+                  <label for="smoking"></label>
+                </div>
+              </div>
+
+              <div class="policy-toggle-item">
+                <div class="policy-info">
+                  <strong>Pets allowed?</strong>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="pets">
+                  <label for="pets"></label>
+                </div>
+              </div>
+
+              <div class="policy-toggle-item">
+                <div class="policy-info">
+                  <strong>Private parties/events allowed?</strong>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="parties">
+                  <label for="parties"></label>
+                </div>
+              </div>
+
+              <div class="policy-toggle-item">
+                <div class="policy-info">
+                  <strong>Outside visitors allowed in rooms?</strong>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="visitors">
+                  <label for="visitors"></label>
+                </div>
+              </div>
+
+              <div class="policy-toggle-item">
+                <div class="policy-info">
+                  <strong>Wheelchair accessible?</strong>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="wheelchair" checked>
+                  <label for="wheelchair"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ID Proofs -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="7" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="13" y2="16"/></svg>
+              </div>
+              <div>
+                <h2>Acceptable ID Proofs</h2>
+                <p>Select accepted identity documents</p>
+              </div>
+            </div>
+
+            <div class="checkbox-grid">
+              <label class="checkbox-card">
+                <input type="checkbox" checked>
+                <span>Aadhaar Card</span>
+              </label>
+              <label class="checkbox-card">
+                <input type="checkbox" checked>
+                <span>Passport</span>
+              </label>
+              <label class="checkbox-card">
+                <input type="checkbox" checked>
+                <span>Driving License</span>
+              </label>
+              <label class="checkbox-card">
+                <input type="checkbox">
+                <span>Voter ID</span>
+              </label>
+              <label class="checkbox-card">
+                <input type="checkbox">
+                <span>PAN Card</span>
+              </label>
+              <label class="checkbox-card">
+                <input type="checkbox">
+                <span>Government ID</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="btn btn-secondary" onclick="goToStep(3)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Back
+            </button>
+            <button class="btn btn-primary" onclick="goToStep(5)">
+              Continue to Documents
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ========== STEP 5: Documents ========== -->
+        <div class="step-content" id="step5">
+          <div class="step-header">
+            <h1>Finance & Legal Documents</h1>
+            <p>Upload required documents for verification</p>
+          </div>
+
+          <!-- Ownership Documents -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div>
+                <h2>Ownership Documents</h2>
+                <p>Upload property ownership or relationship documents</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Ownership Type <span class="required">*</span></label>
+              <select class="form-input" id="ownershipType">
+                <option value="">Select ownership type</option>
+                <option value="own">My Own Property</option>
+                <option value="spouse">My Spouse owns the property</option>
+                <option value="parents">My Parents/Grand Parents own the property</option>
+                <option value="sibling">My Sibling/Cousin owns the property</option>
+                <option value="friend">My Friend owns the property</option>
+                <option value="revenue">I have taken property for revenue management</option>
+                <option value="lease">Lease Property</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Name of Property Owner <span class="required">*</span></label>
+              <input type="text" class="form-input" placeholder="Enter owner's full name">
+            </div>
+
+            <div class="document-upload-section">
+              <h4>Registration Document <span class="required">*</span></h4>
+              <p class="upload-hint">Upload property registration or ownership document</p>
+              <div class="document-upload-box" id="registrationDocUpload">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>Click or drag to upload document</span>
+                <small>PDF, JPG, PNG (Max 10MB)</small>
+              </div>
+            </div>
+
+            <div class="info-banner warning">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <p>The address on the registration document should match with the property address entered earlier.</p>
+            </div>
+          </div>
+
+          <!-- Bank Details -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              </div>
+              <div>
+                <h2>Bank Account Details</h2>
+                <p>Add your bank details for settlements</p>
+              </div>
+            </div>
+
+            <div class="form-grid cols-2">
+              <div class="form-group">
+                <label class="form-label">Account Holder Name <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="Name as per bank account">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Account Number <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="Enter account number">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Confirm Account Number <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="Re-enter account number">
+              </div>
+              <div class="form-group">
+                <label class="form-label">IFSC Code <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="Enter IFSC code" id="ifscCode">
+              </div>
+              <div class="form-group full-width">
+                <label class="form-label">Bank Name</label>
+                <input type="text" class="form-input" placeholder="Auto-filled from IFSC" readonly id="bankName">
+              </div>
+            </div>
+
+            <button class="btn btn-outline" id="verifyBankBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Verify Bank Account
+            </button>
+          </div>
+
+          <!-- GST & PAN -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/></svg>
+              </div>
+              <div>
+                <h2>Tax Information</h2>
+                <p>Enter your GST and PAN details</p>
+              </div>
+            </div>
+
+            <div class="form-grid cols-2">
+              <div class="form-group">
+                <label class="form-label">GSTIN</label>
+                <div class="input-with-action">
+                  <input type="text" class="form-input" placeholder="Enter 15-digit GSTIN" id="gstinInput">
+                  <button class="btn btn-sm btn-outline verify-btn">Verify</button>
+                </div>
+                <small class="form-hint">Leave blank if not registered for GST</small>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">PAN Number <span class="required">*</span></label>
+                <div class="input-with-action">
+                  <input type="text" class="form-input" placeholder="Enter 10-character PAN" id="panInput">
+                  <button class="btn btn-sm btn-outline verify-btn">Verify</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">TAN Number (Optional)</label>
+                <input type="text" class="form-input" placeholder="Enter TAN if available">
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="btn btn-secondary" onclick="goToStep(4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Back
+            </button>
+            <button class="btn btn-primary" onclick="goToStep(6)">
+              Continue to Review
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ========== STEP 6: Review ========== -->
+        <div class="step-content" id="step6">
+          <div class="step-header">
+            <h1>Review & Submit</h1>
+            <p>Review all information before submitting</p>
+          </div>
+
+          <!-- Property Preview -->
+          <div class="preview-card">
+            <div class="preview-header">
+              <h2>Property Preview</h2>
+              <p>This is how your property will appear on Scapia app</p>
+            </div>
+
+            <div class="app-preview">
+              <div class="phone-mockup">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                  <div class="preview-image">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop" alt="Property">
+                    <div class="preview-badge">New</div>
+                  </div>
+                  <div class="preview-content">
+                    <h3>HiTech Residency</h3>
+                    <div class="preview-rating">
+                      <span class="stars">★★★★☆</span>
+                      <span>4 Star Hotel</span>
+                    </div>
+                    <p class="preview-location">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      Vesu, Surat, Gujarat
+                    </p>
+                    <div class="preview-amenities">
+                      <span>🅿️ Parking</span>
+                      <span>📶 WiFi</span>
+                      <span>❄️ AC</span>
+                      <span>+5 more</span>
+                    </div>
+                    <div class="preview-price">
+                      <span class="price">₹4,500</span>
+                      <span class="per-night">/night</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review Sections -->
+          <div class="review-sections">
+            <div class="review-section">
+              <div class="review-section-header">
+                <h3>Property Information</h3>
+                <button class="btn btn-link" onclick="goToStep(1)">Edit</button>
+              </div>
+              <div class="review-grid">
+                <div class="review-item">
+                  <span class="review-label">Property Name</span>
+                  <span class="review-value">HiTech Residency</span>
+                </div>
+                <div class="review-item">
+                  <span class="review-label">Property Type</span>
+                  <span class="review-value">Hotel</span>
+                </div>
+                <div class="review-item">
+                  <span class="review-label">Star Rating</span>
+                  <span class="review-value">4 Star</span>
+                </div>
+                <div class="review-item">
+                  <span class="review-label">Address</span>
+                  <span class="review-value">HiTech Residency, Vesu, Surat, Gujarat 395007</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-section">
+              <div class="review-section-header">
+                <h3>Room Types</h3>
+                <button class="btn btn-link" onclick="goToStep(3)">Edit</button>
+              </div>
+              <div class="review-rooms">
+                <div class="review-room">
+                  <strong>Deluxe Room</strong>
+                  <span>8 rooms • ₹4,500/night • CP (Breakfast)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-section">
+              <div class="review-section-header">
+                <h3>Policies</h3>
+                <button class="btn btn-link" onclick="goToStep(4)">Edit</button>
+              </div>
+              <div class="review-grid">
+                <div class="review-item">
+                  <span class="review-label">Check-in</span>
+                  <span class="review-value">2:00 PM</span>
+                </div>
+                <div class="review-item">
+                  <span class="review-label">Check-out</span>
+                  <span class="review-value">11:00 AM</span>
+                </div>
+                <div class="review-item">
+                  <span class="review-label">Cancellation</span>
+                  <span class="review-value">Moderate</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-section">
+              <div class="review-section-header">
+                <h3>Documents</h3>
+                <button class="btn btn-link" onclick="goToStep(5)">Edit</button>
+              </div>
+              <div class="review-grid">
+                <div class="review-item">
+                  <span class="review-label">Ownership</span>
+                  <span class="review-value success">✓ Verified</span>
+                </div>
+                <div class="review-item">
+                  <span class="review-label">Bank Account</span>
+                  <span class="review-value success">✓ Verified</span>
+                </div>
+                <div class="review-item">
+                  <span class="review-label">PAN</span>
+                  <span class="review-value success">✓ Verified</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Terms Acceptance -->
+          <div class="form-card">
+            <div class="checkbox-group terms">
+              <input type="checkbox" id="finalTerms">
+              <label for="finalTerms">
+                I confirm that all the information provided is accurate and I accept the <a href="#">Terms & Conditions</a> for listing my property on Scapia.
+              </label>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="btn btn-secondary" onclick="goToStep(5)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Back
+            </button>
+            <button class="btn btn-primary btn-lg" id="submitPropertyBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Submit for Review
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ==================== SUCCESS PAGE ==================== -->
+    <div class="page hidden" id="successPage">
+      <div class="success-container">
+        <div class="success-content">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <h1>Property Submitted Successfully!</h1>
+          <p>Your property <strong>HiTech Residency</strong> has been submitted for review. Our team will verify the details and get back to you within 24-48 hours.</p>
+
+          <div class="success-info">
+            <div class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <div>
+                <strong>Under Review</strong>
+                <span>Expected completion: 24-48 hours</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <div>
+                <strong>Email Notification</strong>
+                <span>You'll receive updates at your registered email</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="success-actions">
+            <button class="btn btn-secondary" id="addAnotherPropertyBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Another Property
+            </button>
+            <button class="btn btn-primary" id="goToDashboardBtn">
+              Go to Dashboard
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Property Suggestion Modal -->
+  <div class="modal-overlay" id="propertyModal">
+    <div class="modal">
+      <h3 class="modal-title">Is this the property you are looking for?</h3>
+
+      <div class="property-images">
+        <div class="property-image">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=200&h=200&fit=crop" alt="Property">
+        </div>
+        <div class="property-image">
+          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=200&h=200&fit=crop" alt="Property">
+        </div>
+        <div class="property-image">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=200&h=200&fit=crop" alt="Property">
+        </div>
+      </div>
+
+      <div class="property-info-card">
+        <div class="property-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="property-details">
+          <div class="property-name" id="modalPropertyName">HiTech Residency</div>
+          <div class="property-meta">
+            <span class="star-rating">★★★★ 4-star</span>
+            <span>•</span>
+            <span id="modalPropertyLocation">Vesu, Surat</span>
+          </div>
+        </div>
+      </div>
+
+      <a class="manual-entry-link" id="manualEntryLink">No, I will enter data manually</a>
+
+      <button class="btn btn-primary btn-full" id="confirmPropertyBtn">
+        Yes, This is My Property
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span id="toastMessage">Action completed successfully!</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
